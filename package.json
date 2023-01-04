@@ -27,6 +27,7 @@
   },
   "git": {
     "scripts": {
+      "pre-commit": "npm run build",
       "pre-push": "surge --project ./build --domain coreasn.surge.sh"
     }
   },
