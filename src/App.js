@@ -13,7 +13,7 @@ function App() {
   const filterByname = (list, name) => list.filter(l => l.name.toLowerCase().includes(name) || l.city.toLowerCase().includes(name))
   const handleSearch = (e) => {
     e.preventDefault()
-    setFilter(e.target.value)
+    setFilter(e.target.value.toLowerCase())
   }
 
 
