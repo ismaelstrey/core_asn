@@ -26,8 +26,8 @@ function App() {
   return (
     <Main>
       <Header content="Qantidade de registros" list={dataCit} />
-      <div className="flex px-6 mt-2 mb-4 justify-between min-[320px]:flex-col max-[600px]:flex-row sm:items-center md:flex-row">
-        <div className="flex sm:pt-8">
+      <div className="flex px-6 mt-2 mb-4 justify-between sm:items-center md:flex-row min-[320px]:flex-col max-[600px]:flex-row ">
+        <div className="flex sm:pt-8 justify-center">
           <span className="bg-white px-5 cursor-default rounded-l-full">Ordenação por  </span>
           <span className="bg-orange-500 px-5 cursor-pointer" onClick={() => setCampo('city')}>Cidade</span>
           <span className="bg-red-200 px-5 cursor-pointer text-red-700" onClick={() => setCampo('name')}>Nome</span>
@@ -35,9 +35,8 @@ function App() {
         </div>
         {filter && <span className="text-white flex bg-purple-500 rounded-full w-4/12 justify-center items-center">{filter}</span>}
 
-        <div className="flex sm:pt-8">
-          <label className="text-white pr-4">Pesquisa</label>
-          <input className="form-input px-4 py-1 rounded-full  sm:mt-4" type="txt" name="busca" onChange={(e) => handleSearch(e)} />
+        <div className="flex sm:pt-8 text-center mt-4 items-center min-[320px]:flex-col max-[600px]:flex-row">
+          <input placeholder="Pesquisa" className="form-input w-full px-4 py-2 my-4 rounded-full  sm:mt-4" type="txt" name="busca" onChange={(e) => handleSearch(e)} />
         </div>
       </div>
       <Content list={dataCit} />
