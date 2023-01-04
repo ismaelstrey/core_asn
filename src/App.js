@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ApiRs } from "./API/Api";
+import { ApiRs, Api } from "./API/Api";
 import { Content } from "./components/Content";
 import { Header } from "./components/Header";
 import { Main } from "./components/Main";
@@ -8,6 +8,10 @@ import { FcFilledFilter } from 'react-icons/fc'
 
 function App() {
   const [dataCit, setDataCity] = useState([])
+  const [location, setlocation] = useState([])
+  const loadApi = () => {
+    return Api().then(dataLocation => setlocation(dataLocation.data))
+  }
   const [campo, setCampo] = useState('name')
   const [filter, setFilter] = useState('')
   const filterByname = (list, name) => list.filter(l => l.name.toLowerCase().includes(name) || l.city.toLowerCase().includes(name))
@@ -18,14 +22,15 @@ function App() {
 
 
   useEffect(() => {
+    loadApi(data => console.log(data))
     const filtrado = filterByname(ApiRs.data, filter)
     setDataCity(orderByCity(filtrado, campo))
     // eslint-disable-next-line
   }, [campo, filter])
-
   return (
     <Main>
-      <Header content="Qantidade de registros" list={dataCit} />
+      <Header content="Qantidade de registros" list={dataCit} location={location} />
+
       <div className="flex px-6 mt-2 mb-4 justify-between sm:items-center md:flex-row min-[320px]:flex-col max-[600px]:flex-row ">
         <div className="flex sm:pt-8 justify-center">
           <span className="bg-white px-5 cursor-default rounded-l-full">Ordenação por  </span>
